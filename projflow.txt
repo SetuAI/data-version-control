@@ -59,4 +59,17 @@ git add,commit and push now
 
 -----------------------------------------------------------------------
 
+Now make changes to proj.py to append new row in the data and 
+check changes via dvc status
+uncomment new_row_loc in proj.py  and
+df.loc[len(df.index)] = new_row_loc
+Now you can check the sample_data.csv, you will see the data is changed (a row is added)
+you can also check by writing dvc status
 
+Now dvc commit and dvc push 
+and with this, the md5 id will be updated and corresponding changes will be pushed in s3
+
+before changes md5 : "md5": "f004877355d955194d312a877ddd7521"
+After dvc commit and dvc push
+after changes md5 : "md5": "aaecd5ab789d53a8930d840e3507c20c"
+you wil also see 2 more files in s3 
