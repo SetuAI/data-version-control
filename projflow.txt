@@ -87,3 +87,6 @@ and run it (python proj.py)
 Now do dvc status, then do dvc commit and dvc push
 You will see new files md5 and data for new_row_loc2
 3 for md5 and 3 more data changes
+
+Again dvc status (Data and pipelines are up to date.)
+Then git status (it will give us modification reports)
