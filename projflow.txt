@@ -2,3 +2,53 @@ steps to document in versioning
 
 1. create git repo and clone it locally
 2. create proj.py and add some code in it and save a csv file 
+3. git add,commit and push . 
+4. pip install dvc, then initiate (dvc init)
+5. then do dvc init and hit enter. you will see the .dvc folder and .dvcignore
+6. Now locally create a folder called s3 and we will remote origin it. (mkdir s3)
+7. Now you have to tell DVC where is your remote origin , just how we tell it to git
+dvc remote add -d myremote s3 (is using amazon s3 put the url)
+8. Now tell dvc to add data, and inside this data (csv,excel file), now you are responsible
+for its  versionining (data changes, tracking data changes etc).
+dvc add data/ (if you want to track versioning of a specific file : dvc add data/filename.csv)
+dvc add data/  (this means you want dvc to version all the files inside data)
+
+when you perform dvc add data/
+you get error :  output 'data' is already tracked by SCM (e.g. Git).
+
+Now we need to remove version tracking from git using following commands: 
+git rm -r --cached 'data' (this will remove data tracking from git)
+git commit -m "stop tracking data"
+
+After this, git rm -r --cached 'data' (this will remove data tracking from git)
+you get output : rm 'data/sample_data.csv'
+now we will commit this : git commit -m "stop tracking data"
+Now git is not tracking data folder anymore
+
+After this, you can run dvc add data/ and it will work fine (for tracking) 
+Now you can see .dvc files in data folder
+
+Check the output now : 
+
+
+
+
+Now in data.dvc you will find md5: d0d7d604bde05aa8105c9f99872a2f94.dir
+this is the id dvc makes and you track it with git
+this id helps dvc to fetch corresponding Data
+it changes with every data changes (data changes, tracking data changes etc)
+
+
+In the left pane, you can go to cache\files\md5 path
+Under that you can find d0 and f0 
+d0 is the md5 id
+f0 is the data
+
+In every version, you will see changes made to d0 and f0
+
+Now, execute  git add .gitignore data.dvc
+
+Now, do git status to check what is modified
+
+Also execute, dvc status ,
+it says up to date, because nothing has been updated yet 
