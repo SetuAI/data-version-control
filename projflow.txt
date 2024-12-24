@@ -31,8 +31,6 @@ Now you can see .dvc files in data folder
 Check the output now : 
 
 
-
-
 Now in data.dvc you will find md5: d0d7d604bde05aa8105c9f99872a2f94.dir
 this is the id dvc makes and you track it with git
 this id helps dvc to fetch corresponding Data
@@ -52,3 +50,13 @@ Now, do git status to check what is modified
 
 Also execute, dvc status ,
 it says up to date, because nothing has been updated yet 
+
+Now to dvc commit  and then dvc push
+In dvc it pushes 3 files d0 (unique token) and f0
+for ex, d0 : md5": "f004877355d955194d312a877ddd7521"
+
+git add,commit and push now
+
+-----------------------------------------------------------------------
+
+
