@@ -1,0 +1,4 @@
+steps to document in versioning
+
+1. create git repo and clone it locally
+2. create proj.py and add some code in it and save a csv file 

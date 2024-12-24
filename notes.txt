@@ -1,0 +1,49 @@
+Versioning of Data:
+
+In a nutshell , Versioning of data is a technique used to track changes made to data over time.
+Tools : MLflow, ZenML,DVC, etc
+DVC is a good tool to start learning about versioning of data. 
+-------------------------------------------------------------------------------------------------------
+
+Why do Data versioning ? 
+
+A pipeline lifecycle typically looks like : 
+Data Ingestion, Data Processing, Feature Engineering,Feature Selection,
+Model Training, Model Evaluation ...
+(usually triggered in main.py)
+
+Let's say you have a S3 bucket which stores data
+Say you create a data ingestion piece which hits S3 and gets the data
+Every component has an artifact 
+
+If data enginerring makes certain changes to s3 buckets - adds or removes data
+Now data flowing in and out of data ingestion or artifact will change
+Say you make some changes in data preprocessing stage in outlier analysis
+or may be you made some changes in feature engineering.
+This leads to changes in the model training and Evaluation (performance and metrics)
+Say you ran 8 to 10 such experiments, so how will you rollback to previous older version ? 
+
+This is where we introduce Data versioning
+
+----------------------------------------------------------------------------------------------------
+
+We just do not version tabular data, but any kind (for ex, json format data)
+
+For example, if in the current trigger, you got certain evaluation metrics
+and you forgot to save the last evaluation metrics output, you can version it for similar purposes
+
+Compare and track different versions for different outputs ....
+
+Every minor change made in the component makes the change in the entire pipeline..
+so you save and track it using DVC.
+
+-----------------------------------------------------------------------------------------------------
+
+Git is also a version control system, but it takes care of the code versioning
+DVC takes care of Data versioning, you tell DVC this is where my artifcats are, tabular data is , etc
+
+Every time there is a change, DVC will commit the change and save it.
+
+Git has a limit on file storage (Though you have Git LFS, but not used widely)
+
+------------------------------------------------------------------------------------------------------
