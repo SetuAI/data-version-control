@@ -73,3 +73,17 @@ before changes md5 : "md5": "f004877355d955194d312a877ddd7521"
 After dvc commit and dvc push
 after changes md5 : "md5": "aaecd5ab789d53a8930d840e3507c20c"
 you wil also see 2 more files in s3 
+-- these changes are made in s3
+
+Git will only track data.dvc
+
+now do git add,commit and push
+then also do git log --oneline
+
+-------------------------------------------------------------------------------------
+Now in proj.py uncomment new_row_loc2  and df.loc[len(df.index)]
+and run it (python proj.py)
+
+Now do dvc status, then do dvc commit and dvc push
+You will see new files md5 and data for new_row_loc2
+3 for md5 and 3 more data changes
