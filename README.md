@@ -1,2 +1,3 @@
 # data-version-control
-repo contains an example on data version control
+
+this is a good start to ML ops and data versioning 
